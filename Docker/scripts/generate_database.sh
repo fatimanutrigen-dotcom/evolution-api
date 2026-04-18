@@ -5,7 +5,8 @@ source ./Docker/scripts/env_functions.sh
 if [ "$DOCKER_ENV" != "true" ]; then
     export_env_vars
 fi
-
+DATABASE_PROVIDER=${DATABASE_PROVIDER:-postgresql}
+DATABASE_URL=${DATABASE_URL:-postgresql://postgres:postgres@localhost:5432/postgres}
 if [[ "$DATABASE_PROVIDER" == "postgresql" || "$DATABASE_PROVIDER" == "mysql" || "$DATABASE_PROVIDER" == "psql_bouncer" ]]; then
     export DATABASE_URL
     echo "Generating database for $DATABASE_PROVIDER"
