@@ -25,6 +25,8 @@ COPY ./Docker ./Docker
 
 RUN chmod +x ./Docker/scripts/* && dos2unix ./Docker/scripts/*
 ENV DOCKER_ENV=true
+ENV DATABASE_PROVIDER=postgresql
+ENV DATABASE_URL=postgresql://postgres:postgres@localhost:5432/postgres
 RUN ./Docker/scripts/generate_database.sh
 
 RUN npm run build
