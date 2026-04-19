@@ -266,7 +266,7 @@ export class BaileysStartupService extends ChannelStartupService {
 
   public async logoutInstance() {
     this.messageProcessor.onDestroy();
-    await this.client?.logout('Log out instance: ' + this.instance?.name);
+    await this.client?.logout('Log out instance: ' + this.instanceName);
 
     this.client?.ws?.close();
 
@@ -634,19 +634,7 @@ export class BaileysStartupService extends ChannelStartupService {
         };
       }
     }
-const sessionPath = `./sessions/${this.instance?.name || 'default'}`;
-const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
 
-this.instance.authState = {
-  state,
-  saveCreds,
-};
-    if (!this.instance?.authState?.state) {
-  if (!this.instance?.authState?.state) {
-  throw new Error(
-    `authState no inicializado para la instancia ${this.instance?.name || 'unknown'}`
-  );
-}
     const socketConfig: UserFacingSocketConfig = {
       ...options,
       version,
