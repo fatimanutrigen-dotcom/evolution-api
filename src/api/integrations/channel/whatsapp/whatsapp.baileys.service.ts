@@ -1,4 +1,3 @@
-import { useMultiFileAuthState } from '@whiskeysockets/baileys';
 import { getCollectionsDto } from '@api/dto/business.dto';
 import { OfferCallDto } from '@api/dto/call.dto';
 import {
