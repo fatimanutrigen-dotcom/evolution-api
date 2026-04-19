@@ -266,7 +266,7 @@ export class BaileysStartupService extends ChannelStartupService {
 
   public async logoutInstance() {
     this.messageProcessor.onDestroy();
-    await this.client?.logout('Log out instance: ' + this.instanceName);
+    await this.client?.logout('Log out instance: ' + this.instance?.name);
 
     this.client?.ws?.close();
 
