@@ -634,8 +634,7 @@ export class BaileysStartupService extends ChannelStartupService {
         };
       }
     }
-const sessionPath = `./sessions/${this.instance?.instanceName || this.instance?.name || 'default'}`;
-
+const sessionPath = `./sessions/${this.instance?.name || 'default'}`;
 const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
 
 this.instance.authState = {
@@ -643,8 +642,9 @@ this.instance.authState = {
   saveCreds,
 };
     if (!this.instance?.authState?.state) {
+  if (!this.instance?.authState?.state) {
   throw new Error(
-    `authState no inicializado para la instancia ${this.instance?.instanceName || this.instance?.name || 'unknown'}`
+    `authState no inicializado para la instancia ${this.instance?.name || 'unknown'}`
   );
 }
     const socketConfig: UserFacingSocketConfig = {
