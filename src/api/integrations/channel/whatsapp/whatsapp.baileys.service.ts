@@ -634,7 +634,15 @@ export class BaileysStartupService extends ChannelStartupService {
         };
       }
     }
-if (!this.instance?.authState?.state) {
+const sessionPath = `./sessions/${this.instance?.instanceName || this.instance?.name || 'default'}`;
+
+const { state, saveCreds } = await useMultiFileAuthState(sessionPath);
+
+this.instance.authState = {
+  state,
+  saveCreds,
+};
+    if (!this.instance?.authState?.state) {
   throw new Error(
     `authState no inicializado para la instancia ${this.instance?.instanceName || this.instance?.name || 'unknown'}`
   );
